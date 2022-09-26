@@ -1,8 +1,19 @@
 import { faBagShopping } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Link, NavLink, Outlet } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom';
+import { setUser } from '../redux/authSlice';
+import { logout } from '../services/auth';
 
 const Layout = () => {
+	const navigate = useNavigate();
+	const dispatch = useDispatch();
+
+	const logoutUser = async () => {
+		await logout();
+		dispatch(setUser(null));
+		navigate("/admin/login");
+	};
 	return (
 		<>
 			<nav className='bg-white px-2 sm:px-4 py-2.5 fixed w-full z-20 top-0 left-0 border-b border-gray-200 '>
@@ -17,9 +28,10 @@ const Layout = () => {
 					</Link>
 					<div className='flex md:order-2'>
 						<button
+							onClick={logoutUser}
 							type='button'
 							className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 '>
-							Get started
+							Logout
 						</button>
 						<button
 							data-collapse-toggle='navbar-sticky'
@@ -65,13 +77,6 @@ const Layout = () => {
 									to='users'
 									className='block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 '>
 									Users
-								</NavLink>
-							</li>
-							<li>
-								<NavLink
-									to='users'
-									className='block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 '>
-									Contact
 								</NavLink>
 							</li>
 						</ul>

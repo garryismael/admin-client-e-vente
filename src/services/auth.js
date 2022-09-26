@@ -7,6 +7,11 @@ export const login = async ({ email, password }) => {
 	});
 };
 
+export const logout = async () => {
+	return await axios.post(`auth/logout`);
+};
+
+
 export const me = async () => {
 	return await axios.get(process.env.REACT_APP_AUTH_ME);
 };

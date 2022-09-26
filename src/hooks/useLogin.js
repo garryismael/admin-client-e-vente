@@ -18,7 +18,7 @@ const useLogin = () => {
 			setHeader(response);
 			response = await me();
 			dispatch(setUser(response.data));
-            navigate('/');
+            navigate('/products');
 		} catch (error) {
 			setError('Invalid Email Or Password');
 		}
