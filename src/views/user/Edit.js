@@ -18,7 +18,7 @@ const UserEditView = () => {
 		dispatch(editUser(response.data));
 	};
 
-	const [forms, onSubmit] = useFormUser({ editUserAction, user });
+	const [forms, onSubmit] = useFormUser({ callback: editUserAction, user, edit: true });
 
 	return (
 		<div className='max-w-lg p-8 mx-auto my-10 bg-white rounded-lg shadow-2xl md:p-12'>
