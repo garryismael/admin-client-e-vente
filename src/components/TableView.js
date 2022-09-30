@@ -26,21 +26,21 @@ const TableView = (props) => {
 
 	const DisplayObject = ({ obj, title }) => {
 		const idx = Object.keys(title).at(0);
-		const data = obj[idx];
-		const imageUrl = (data, title) => {
-			const url = Object.values(title).shift().at(2);
-			const value = data[Object.values(title).shift().at(1)];
+		const idxVal = Object.values(title).at(0);
+		const imageUrl = () => {
+			const url = idxVal.at(2);
+			const value = obj[idx][idxVal.at(1)];
 			return `${process.env.REACT_APP_BASE_URL}/${url}/images/${value}`;
 		};
 
 		return (
 			<div className='flex items-center gap-3'>
 				<img
-					src={imageUrl(data, title)}
-					alt={data[Object.values(title).at(1)]}
+					src={imageUrl()}
+					alt={obj[idx][Object.values(title).at(0).at(0)]}
 					className='w-8 rounded-2xl'
 				/>
-				<span>{data[Object.values(title).shift().at(0)]}</span>
+				<span>{obj[idx][Object.values(title).at(0).at(0)]}</span>
 			</div>
 		);
 	};
@@ -72,7 +72,8 @@ const TableView = (props) => {
 											? Object.keys(title)[0]
 											: title
 									}
-									className='px-6 py-4 text-left'>
+									className='px-6 py-4 text-left'
+								>
 									{Array.isArray(title)
 										? title[0].replace('_', ' ')
 										: title instanceof Object
@@ -89,12 +90,14 @@ const TableView = (props) => {
 						return (
 							<tr
 								key={index}
-								className='px-3 py-4 text-sm break-all border-b border-gray-200 hover:bg-gray-100'>
+								className='px-3 py-4 text-sm break-all border-b border-gray-200 hover:bg-gray-100'
+							>
 								{props.titles.map((title, index) => {
 									return (
 										<td
 											key={index}
-											className='max-w-xs px-6 py-2 break-all py-auto'>
+											className='max-w-xs px-6 py-2 break-all py-auto'
+										>
 											{Array.isArray(title) ? (
 												<Display
 													obj={obj}
@@ -139,4 +142,3 @@ const TableView = (props) => {
 };
 
 export default TableView;
-

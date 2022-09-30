@@ -1,6 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useDispatch } from 'react-redux';
-import Search from '../components/Search';
 import TableView from '../components/TableView';
 import { titles } from '../constants/purchase';
 import usePurchases from '../hooks/usePurchases';
@@ -9,10 +8,68 @@ import { deletePurchases } from '../services/purchases';
 
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
+import { useState } from 'react';
+
+const Search = ({ data, fields, setData }) => {
+	const [origin, setOrigin] = useState([]);
+
+	const filter = (value) => {
+		if (origin.length === 0) setOrigin([...data]);
+		if (value === '') {
+			setData([...origin]);
+		} else {
+			const results = origin.filter((obj) => {
+				for (let field of fields) {
+					if (Array.isArray(field) || !(field instanceof Object)) {
+						let idx = Array.isArray(field) ? field[0] : field;
+						if (
+							obj[idx]
+								.toString()
+								.toLowerCase()
+								.includes(value.toLowerCase())
+						)
+							return true;
+					} else {
+						if (
+							obj.product.name
+								.toString()
+								.toLowerCase()
+								.includes(value.toLowerCase())
+						) {
+							return true;
+						}
+						if (
+							obj.client.name
+								.toString()
+								.toLowerCase()
+								.includes(value.toLowerCase())
+						) {
+							return true;
+						}
+					}
+				}
+				return false;
+			});
+			setData(results);
+		}
+	};
+
+	return (
+		<div className='w-48'>
+			<input
+				type='text'
+				className='input-field'
+				placeholder='Search'
+				required
+				onKeyUp={(e) => filter(e.target.value)}
+			/>
+		</div>
+	);
+};
 const Actions = (props) => {
 	const onDelete = async () => {
 		props.setMessage(
-			`Delete the purchase of ${props.item.client.name} with the product ${props.item.product.name}?`,
+			`Delete the purchase of ${props.item.client.name} with the product ${props.item.product.name}?`
 		);
 		props.setDisplay('flex');
 		props.setSelected(props.item);
@@ -60,4 +117,3 @@ const PurchasePage = () => {
 };
 
 export default PurchasePage;
-
