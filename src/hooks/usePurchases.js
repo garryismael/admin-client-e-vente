@@ -12,13 +12,13 @@ const usePurchases = () => {
 				const response = await getPurchases();
 				dispatch(setPurchases(response.data));
 			} catch (errors) {
-				throw new Error(errors);
+				console.error(errors);
 			}
 		};
 		if (purchases.length <= 0) {
 			fetch_data();
 		}
-	}, [dispatch, purchases]);
+	}, []);
 
 	const setData = (data) => {
 		dispatch(setPurchases(data));

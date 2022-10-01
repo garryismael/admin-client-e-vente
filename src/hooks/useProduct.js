@@ -18,7 +18,7 @@ const useProducts = () => {
 		if (products.length <= 0) {
 			fetch_data();
 		}
-	}, [dispatch, products]);
+	}, []);
 
 	const setData = (data) => {
 		dispatch(setProducts(data));

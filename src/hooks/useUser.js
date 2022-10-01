@@ -18,7 +18,7 @@ const useUsers = () => {
 		if (users.length <= 0) {
 			fetch_data();
 		}
-	}, [dispatch, users]);
+	}, []);
 
 	const setData = (data) => {
 		dispatch(setUsers(data));
