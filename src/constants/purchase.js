@@ -5,3 +5,11 @@ export const titles = [
 	'quantity',
 	'date_purchase',
 ];
+
+export const deleted_purchases_titles = [
+	'id',
+	'client',
+	'product',
+	'quantity',
+	'date_purchase',
+];

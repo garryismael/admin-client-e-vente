@@ -6,6 +6,10 @@ export const getPurchases = async () => {
 	return await axios.get(URL);
 };
 
+export const getDeletedPurchases = async () => {
+	return await axios.get(`${URL}/deleted`);
+};
+
 
 export const deletePurchases = async (id) => {
 	return await axios.delete(`${URL}/${id}`);
