@@ -11,6 +11,10 @@ export const getProductAudits = async () => {
 	return await axios.get(`${URL}/audits`);
 }
 
+export const getProductDeleted = async () => {
+	return await axios.get(`${URL}/deleted`);
+}
+
 export const addProduct = async (data) => {
 	return await axios.post(URL, data, multipartForm);
 };

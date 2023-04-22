@@ -33,6 +33,11 @@ const ProductList = () => {
 							Audit
 						</span>
 					</Link>
+					<Link to='deleted'>
+						<span className="py-2 px-3 text-white bg-cyan-600 rounded-sm">
+							Deleted
+						</span>
+					</Link>
 				</div>
 				<Search
 					data={products}

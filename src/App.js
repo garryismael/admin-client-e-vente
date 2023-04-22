@@ -13,6 +13,7 @@ import ProductAuditList from './views/product/Audit';
 import UserAddView from './views/user/Add';
 import UserEditView from './views/user/Edit';
 import UserList from './views/user/List';
+import ProductDeletedList from './views/product/Deleted';
 
 function App() {
 	return (
@@ -39,6 +40,10 @@ function App() {
 						<Route
 							path='audit'
 							element={<ProductAuditList />}
+						/>
+						<Route
+							path='deleted'
+							element={<ProductDeletedList />}
 						/>
 						<Route
 							path='add'
