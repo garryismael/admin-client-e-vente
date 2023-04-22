@@ -9,6 +9,7 @@ import LoginView from './views/auth/Login';
 import ProductAdd from './views/product/Add';
 import ProductEdit from './views/product/Edit';
 import ProductList from './views/product/List';
+import ProductAuditList from './views/product/Audit';
 import UserAddView from './views/user/Add';
 import UserEditView from './views/user/Edit';
 import UserList from './views/user/List';
@@ -34,6 +35,10 @@ function App() {
 						<Route
 							index
 							element={<ProductList />}
+						/>
+						<Route
+							path='audit'
+							element={<ProductAuditList />}
 						/>
 						<Route
 							path='add'

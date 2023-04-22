@@ -7,6 +7,10 @@ export const getProducts = async () => {
 	return await axios.get(URL);
 };
 
+export const getProductAudits = async () => {
+	return await axios.get(`${URL}/audits`);
+}
+
 export const addProduct = async (data) => {
 	return await axios.post(URL, data, multipartForm);
 };
