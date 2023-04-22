@@ -14,6 +14,7 @@ import UserAddView from './views/user/Add';
 import UserEditView from './views/user/Edit';
 import UserList from './views/user/List';
 import ProductDeletedList from './views/product/Deleted';
+import PurchaseDeleted from './views/purchases/PurchaseDeleted';
 
 function App() {
 	return (
@@ -58,6 +59,10 @@ function App() {
 					<Route
 						path='purchases/'
 						element={<PurchasePage />}
+					/>
+					<Route
+						path='purchases/deleted'
+						element={<PurchaseDeleted />}
 					/>
 					<Route
 						path='users'

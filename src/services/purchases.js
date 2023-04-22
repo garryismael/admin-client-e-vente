@@ -7,7 +7,7 @@ export const getPurchases = async () => {
 };
 
 export const getDeletedPurchases = async () => {
-	return await axios.get(`${URL}/deleted`);
+	return await axios.get(`${URL}/get/deleted`);
 };
 
 

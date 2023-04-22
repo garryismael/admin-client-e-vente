@@ -1,21 +1,22 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useDispatch } from 'react-redux';
-import TableView from '../components/TableView';
-import { titles } from '../constants/purchase';
-import usePurchases from '../hooks/usePurchases';
-import { removePurchase } from '../redux/purchaseSlice';
-import { deletePurchases } from '../services/purchases';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useDispatch } from "react-redux";
+import TableView from "../components/TableView";
+import { titles } from "../constants/purchase";
+import usePurchases from "../hooks/usePurchases";
+import { removePurchase } from "../redux/purchaseSlice";
+import { deletePurchases } from "../services/purchases";
 
-import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
-import { useState } from 'react';
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Search = ({ data, fields, setData }) => {
 	const [origin, setOrigin] = useState([]);
 
 	const filter = (value) => {
 		if (origin.length === 0) setOrigin([...data]);
-		if (value === '') {
+		if (value === "") {
 			setData([...origin]);
 		} else {
 			const results = origin.filter((obj) => {
@@ -69,9 +70,9 @@ const Search = ({ data, fields, setData }) => {
 const Actions = (props) => {
 	const onDelete = async () => {
 		props.setMessage(
-			`Delete the purchase of ${props.item.client.name} with the product ${props.item.product.name}?`
+			`Delete the purchase of ${props.item.client.name} with the product ${props.item.product.name}?`,
 		);
-		props.setDisplay('flex');
+		props.setDisplay("flex");
 		props.setSelected(props.item);
 	};
 
@@ -99,7 +100,14 @@ const PurchasePage = () => {
 
 	return (
 		<>
-			<div className='flex items-center justify-end'>
+			<div className='flex items-center justify-between'>
+				<div className='flex items-center gap-3'>
+					<Link to='deleted'>
+						<span className='py-2 px-3 text-white bg-cyan-600 rounded-sm'>
+							Deleted
+						</span>
+					</Link>
+				</div>
 				<Search
 					data={purchases}
 					fields={titles}

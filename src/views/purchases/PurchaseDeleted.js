@@ -1,10 +1,10 @@
-import { useState } from "react";
 import Search from "../../components/Search";
-import { deleted_purchases_titles } from "../../constants/purchase";
 import TableView from "../../components/TableView";
+import { deleted_purchases_titles } from "../../constants/purchase";
+import usePurchaseDeleted from "../../hooks/usePurchaseDeleted";
 
 const PurchaseDeleted = () => {
-	const [purchases, setPurchases] = useState([]);
+	const [purchases, setPurchases] = usePurchaseDeleted();
 
 	return (
 		<>
