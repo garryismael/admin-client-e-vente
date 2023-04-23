@@ -8,8 +8,8 @@ export const titles = [
 
 export const deleted_purchases_titles = [
 	'id',
-	'client_id',
-	'product_id',
+	'client_name',
+	'product_name',
 	'quantity',
 	'deleted_on',
 ];

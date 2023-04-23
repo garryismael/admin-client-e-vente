@@ -1,7 +1,7 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { setProducts } from '../redux/productSlice';
-import { getProducts } from '../services/products';
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setProducts } from "../redux/productSlice";
+import { getProducts } from "../services/products";
 
 const useProducts = () => {
 	const dispatch = useDispatch();
@@ -15,9 +15,7 @@ const useProducts = () => {
 				throw new Error(errors);
 			}
 		};
-		if (products.length <= 0) {
-			fetch_data();
-		}
+		fetch_data();
 	}, []);
 
 	const setData = (data) => {
@@ -28,4 +26,3 @@ const useProducts = () => {
 };
 
 export default useProducts;
-

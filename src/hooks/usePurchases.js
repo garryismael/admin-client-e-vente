@@ -1,7 +1,7 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { setPurchases } from '../redux/purchaseSlice';
-import { getPurchases } from '../services/purchases';
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setPurchases } from "../redux/purchaseSlice";
+import { getPurchases } from "../services/purchases";
 
 const usePurchases = () => {
 	const dispatch = useDispatch();
@@ -15,9 +15,7 @@ const usePurchases = () => {
 				console.error(errors);
 			}
 		};
-		if (purchases.length <= 0) {
-			fetch_data();
-		}
+		fetch_data();
 	}, []);
 
 	const setData = (data) => {
@@ -28,4 +26,3 @@ const usePurchases = () => {
 };
 
 export default usePurchases;
-

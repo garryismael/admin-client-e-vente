@@ -1,7 +1,7 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { setUsers } from '../redux/userSlice';
-import { getUsers } from '../services/user';
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setUsers } from "../redux/userSlice";
+import { getUsers } from "../services/user";
 
 const useUsers = () => {
 	const dispatch = useDispatch();
@@ -15,9 +15,7 @@ const useUsers = () => {
 				throw new Error(errors);
 			}
 		};
-		if (users.length <= 0) {
-			fetch_data();
-		}
+		fetch_data();
 	}, []);
 
 	const setData = (data) => {
@@ -28,4 +26,3 @@ const useUsers = () => {
 };
 
 export default useUsers;
-

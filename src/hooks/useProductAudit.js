@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { getProductAudits } from '../services/products';
+import { useEffect, useState } from "react";
+import { getProductAudits } from "../services/products";
 
 const useProductAudits = () => {
 	const [products, setProducts] = useState([]);
@@ -7,16 +7,15 @@ const useProductAudits = () => {
 		const fetch_data = async () => {
 			try {
 				const response = await getProductAudits();
-                setProducts(response.data);
+				setProducts(response.data);
 			} catch (errors) {
 				throw new Error(errors);
 			}
 		};
-        fetch_data()
+		fetch_data();
 	}, []);
 
 	return [products, setProducts];
 };
 
 export default useProductAudits;
-
